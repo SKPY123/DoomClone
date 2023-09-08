@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://w537ikfjp2d4"]
+
+[ext_resource type="Script" path="res://Game/Scenes/Effects/HitMark/hit_mark.gd" id="1_yxybk"]
+
+[sub_resource type="Curve" id="Curve_74xju"]
+max_value = 3.0
+_data = [Vector2(0, 1.13684), 0.0, 0.0, 0, 0, Vector2(0.11039, 0.252632), 0.0, 0.0, 0, 0, Vector2(0.883117, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_j3qwn"]
+curve = SubResource("Curve_74xju")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jyn3d"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0.09, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 6.0
+scale_min = 0.01
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_j3qwn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a5k8"]
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_xg01n"]
+material = SubResource("StandardMaterial3D_2a5k8")
+
+[node name="HitMark" type="GPUParticles3D"]
+emitting = false
+amount = 30
+lifetime = 0.1
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.09
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_jyn3d")
+draw_pass_1 = SubResource("BoxMesh_xg01n")
+script = ExtResource("1_yxybk")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

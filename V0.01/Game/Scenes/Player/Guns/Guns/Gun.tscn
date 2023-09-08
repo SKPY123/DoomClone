@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=3 uid="uid://6287gw2wwoud"]
+
+[ext_resource type="Script" path="res://Game/Scenes/Player/Guns/Guns/Gun.gd" id="1_trqg7"]
+[ext_resource type="ArrayMesh" uid="uid://bd66ppb5t8306" path="res://Game/Scenes/Player/Guns/Guns/BlasterA.tres" id="2_lp2x0"]
+[ext_resource type="AudioStream" uid="uid://b44634ynxdj8f" path="res://Game/Audio/laser1.mp3" id="3_w42m3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bxwic"]
+direction = Vector3(0, 0, -1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 67.42
+initial_velocity_max = 112.36
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4k5w4"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ce2k6"]
+material = SubResource("StandardMaterial3D_4k5w4")
+size = Vector3(0.05, 0.05, 0.2)
+
+[sub_resource type="Animation" id="Animation_uq1f5"]
+resource_name = "Fire"
+length = 0.1
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.001, 0.11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_plw3m"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_8xudp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ncqdu"]
+_data = {
+"Fire": SubResource("Animation_uq1f5"),
+"Idle": SubResource("Animation_plw3m"),
+"RESET": SubResource("Animation_8xudp")
+}
+
+[node name="Gun" type="Node3D" groups=["Gun"]]
+script = ExtResource("1_trqg7")
+
+[node name="blasterA" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.208885, -0.223076)
+
+[node name="RootNode" type="Node3D" parent="blasterA"]
+
+[node name="GunSkin" type="MeshInstance3D" parent="blasterA/RootNode"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = ExtResource("2_lp2x0")
+skeleton = NodePath("")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00205899, 0.326241, -0.644957)
+emitting = false
+amount = 1
+lifetime = 0.01
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-5.98759, -4.95507, -6.79049, 11.9693, 9.91698, 13.582)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_bxwic")
+draw_pass_1 = SubResource("BoxMesh_ce2k6")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_w42m3")
+doppler_tracking = 2
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ncqdu")
+}
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+radius = 0.225

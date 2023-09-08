@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b7o7agtr6gmyi"
+path="res://.godot/imported/targetB.obj-edf27c5272737d000e6accf65320eb49.mesh"
+
+[deps]
+
+files=["res://.godot/imported/targetB.obj-edf27c5272737d000e6accf65320eb49.mesh"]
+
+source_file="res://Game/3DModels/Models/OBJ format/targetB.obj"
+dest_files=["res://.godot/imported/targetB.obj-edf27c5272737d000e6accf65320eb49.mesh", "res://.godot/imported/targetB.obj-edf27c5272737d000e6accf65320eb49.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddujj8f7ehgb1"]
+
+[ext_resource type="PackedScene" uid="uid://6287gw2wwoud" path="res://Game/Scenes/Player/Guns/Guns/Gun.tscn" id="1_sbeha"]
+[ext_resource type="ArrayMesh" uid="uid://o52lx4xf6duq" path="res://Game/Scenes/Player/Guns/Guns/BlasterD.tres" id="2_dvqo6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qk0b"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="Gun_MachinePistol" instance=ExtResource("1_sbeha")]
+Gun_Color = Color(1, 0, 1, 1)
+ATKSPEED = 0.1
+
+[node name="GunSkin" parent="blasterA/RootNode" index="0"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+mesh = ExtResource("2_dvqo6")
+
+[node name="GPUParticles3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000256174, 0.268336, -0.885204)
+material_override = SubResource("StandardMaterial3D_1qk0b")

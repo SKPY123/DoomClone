@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vhmiu62syp36"
+path="res://.godot/imported/blasterO.obj-943f0c699e7321e398ffe013b9586f33.mesh"
+
+[deps]
+
+files=["res://.godot/imported/blasterO.obj-943f0c699e7321e398ffe013b9586f33.mesh"]
+
+source_file="res://Game/3DModels/Models/OBJ format/blasterO.obj"
+dest_files=["res://.godot/imported/blasterO.obj-943f0c699e7321e398ffe013b9586f33.mesh", "res://.godot/imported/blasterO.obj-943f0c699e7321e398ffe013b9586f33.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://2yexa8okjcv6"
+path="res://.godot/imported/foamBulletA-low.obj-277c3e11cdfe9d848f6ef8ed6267d575.mesh"
+
+[deps]
+
+files=["res://.godot/imported/foamBulletA-low.obj-277c3e11cdfe9d848f6ef8ed6267d575.mesh"]
+
+source_file="res://Game/3DModels/Models/OBJ format/foamBulletA-low.obj"
+dest_files=["res://.godot/imported/foamBulletA-low.obj-277c3e11cdfe9d848f6ef8ed6267d575.mesh", "res://.godot/imported/foamBulletA-low.obj-277c3e11cdfe9d848f6ef8ed6267d575.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
